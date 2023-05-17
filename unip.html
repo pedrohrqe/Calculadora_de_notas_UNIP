@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CALCULADORA DE NOTAS UNIP | TÁ GOSTOSINHO FML</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="media.css">
+</head>
+
+<body>
+    <header>
+        <ul id="barra">
+            <h1>NOTAS<br>UNIP</h1>
+            <ul>
+                <a href="https://github.com/Pedroh2001" clas>Sobre mim</a>
+                <a href="https://www.linkedin.com/in/pholiveira01/">LinkedIn</a>
+            </ul>
+        </ul>
+    </header>
+    <main>
+        <h1>CALCULADORA DE NOTAS UNIP</h1>
+        <h1 id = "easteregg">TÁ GOSTOSINHO | <a href="https://www.instagram.com/pedro.hrqe/">@PEDRO.HRQE</a></h1>
+        <table id="gradesTable">
+            <tr>
+                <th>Matéria</th>
+                <th>Nota 1</th>
+                <th>Nota 2</th>
+                <th>Exame</th>
+                <th>Média</th>
+                <th>Status</th>
+            </tr>
+        </table>
+        <button class="add-btn" onclick="addRow()">Adicionar Matéria</button>
+    </main>
+
+    <script>
+        function calculateAverage(row) {
+            var nota1 = parseFloat(row.cells[1].querySelector('input').value);
+            var nota2 = parseFloat(row.cells[2].querySelector('input').value);
+
+            if (parseFloat(row.cells[1].querySelector('input').value) > 10 || parseFloat(row.cells[1].querySelector('input').value) < 0){
+                row.cells[1].innerHTML = '<input type="number" min="0" max="10" step="0.1" placeholder="NP1" onchange="calculateAverage(this.parentNode.parentNode)">';
+            }
+
+            if (parseFloat(row.cells[2].querySelector('input').value) > 10 || parseFloat(row.cells[2].querySelector('input').value) < 0){
+                row.cells[2].innerHTML = '<input type="number" min="0" max="10" step="0.1" placeholder="NP2" onchange="calculateAverage(this.parentNode.parentNode)">';
+            }
+
+            if (parseFloat(row.cells[1].querySelector('input').value) > 0 && parseFloat(row.cells[2].querySelector('input').value) > 0) {
+                var media = (nota1 + nota2) / 2;
+                row.cells[4].textContent = media.toFixed(1);
+
+                if (row.cells[5].textContent = media < 6.5) {
+                    row.cells[3].innerHTML = '<input type="number" max="10" min="0" step="0.1" placeholder="Exame" onchange="calculateAverageWExam(this.parentNode.parentNode)">';
+                    row.cells[5].textContent = "< PREENCHA EXAME";
+                }
+                else {
+                    row.cells[5].textContent = "APROVADO DIRETO"
+                }
+            }
+        }
+
+        function calculateAverageWExam(row) {
+            var nota1 = parseFloat(row.cells[1].querySelector('input').value);
+            var nota2 = parseFloat(row.cells[2].querySelector('input').value);
+            var exame = parseFloat(row.cells[3].querySelector('input').value);
+
+            var media = (nota1 + nota2) / 2;
+            var mediaExame = (media + exame) / 2;
+
+            if (parseFloat(row.cells[3].querySelector('input').value) > 10 || parseFloat(row.cells[3].querySelector('input').value) < 0){
+                row.cells[3].innerHTML = '<input type="number" max="10" min="0" step="0.1" placeholder="Exame" onchange="calculateAverageWExam(this.parentNode.parentNode)">';
+            }
+
+            if (parseFloat(row.cells[3].querySelector('input').value) > 0) {
+                row.cells[4].textContent = mediaExame.toFixed(1);
+                row.cells[5].textContent = mediaExame >= 5 ? 'APROVADO VIA EXAME' : 'DP'
+            }
+            else {
+                row.cells[5].textContent = 'PREENCHA EXAME NOVAMENTE';
+            }
+        }
+
+        function addRow() {
+            var table = document.getElementById('gradesTable');
+            var rowCount = table.rows.length;
+            var row = table.insertRow(rowCount);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+            var cell4 = row.insertCell(3);
+            var cell5 = row.insertCell(4);
+            var cell6 = row.insertCell(5);
+            cell1.innerHTML = '<input type="text" placeholder="Matéria">';
+            cell2.innerHTML = '<input type="number" min="0" max="10" step="0.1" placeholder="NP1" onchange="calculateAverage(this.parentNode.parentNode)">';
+            cell3.innerHTML = '<input type="number" min="0" max="10" step="0.1" placeholder="NP2" onchange="calculateAverage(this.parentNode.parentNode)">';
+            cell4.innerHTML = '-';
+            cell5.textContent = '-';
+            cell6.textContent = '-';
+        }
+
+        function removeRow(button) {
+            var row = button.parentNode.parentNode;
+            row.parentNode.removeChild(row);
+        }
+    </script>
+</body>
+
+</html>
