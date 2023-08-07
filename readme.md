@@ -5,28 +5,26 @@ Bem-vindo ao Site de Notas da Faculdade UNIP! Este é um projeto em HTML, CSS e 
 ## Funcionalidades
 
 - Insira as notas das avaliações (provas, trabalhos, etc.) da matéria.
-- Clique no botão "Calcular" para obter a nota final e a média.
+- Verifique a média, e se precisará ou não de realizar o exame.
 - O site informará se você foi aprovado ou reprovado, de acordo com a média definida pela faculdade.
 
 ## Como usar
 
-1. Baixe os arquivos do projeto ou clone este repositório em sua máquina.
+1. Acesse o site de notas da UNIP a partir do seu navegador favorito, digitando o endereço URL: [Notas UNIP](https://pedrohrqe.github.io/NOTAS_UNIP/)
 
-2. Abra o arquivo `index.html` no seu navegador.
+2. Na página aberta, você encontrará campos para inserir as notas das avaliações da matéria.
 
-3. Na página aberta, você encontrará campos para inserir as notas das avaliações da matéria.
+3. Digite as notas nos campos apropriados (exemplo: 7.5, 8.0, 6.5, etc.).
 
-4. Digite as notas nos campos apropriados (exemplo: 7.5, 8.0, 6.5, etc.).
+4. O site irá calcular a média com base nas notas inseridas.
 
-5. Clique no botão "Calcular".
+6. O resultado será exibido na tela, informando se você foi aprovado ou reprovado, ou se precisará de realizar o exame
 
-6. O site irá calcular a nota final e a média com base nas notas inseridas.
-
-7. O resultado será exibido na tela, informando se você foi aprovado ou reprovado.
+7. Caso necessário, realize informe uma nota de exame e verifique se será aprovado ou não
 
 ## Requisitos
 
-Certifique-se de ter um navegador atualizado (como Google Chrome, Mozilla Firefox, Microsoft Edge, etc.) para uma experiência melhor com o site.
+Você só precisa de um dispositivo com acesso à internet e um navegador atualizado para usar o site de notas. Funciona perfeitamente em smartphones, tablets e computadores de qualquer plataforma.
 
 ## Contribuindo
 
@@ -38,4 +36,4 @@ Este site é apenas uma ferramenta de cálculo de notas e média, não substitui
 
 ## Créditos
 
-Este projeto foi criado por [Seu Nome ou Nome do Autor], inspirado na necessidade de calcular notas e médias de forma rápida e prática para os estudantes da Faculdade UNIP.
+Este projeto foi criado por [Pedro Henrique](https://github.com/pedrohrqe), inspirado na necessidade de calcular notas e médias de forma rápida e prática para os estudantes da Faculdade UNIP.
