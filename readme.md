@@ -10,7 +10,7 @@ Bem-vindo ao Site de Notas da Faculdade UNIP! Este é um projeto em HTML, CSS e 
 
 ## Como usar 📖
 
-1. Acesse o site de notas da UNIP a partir do seu navegador favorito, digitando o endereço URL: [Notas UNIP](https://pedrohrqe.github.io/NOTAS_UNIP/)
+1. Acesse o site de notas da UNIP a partir do seu navegador favorito, digitando o endereço URL: [Notas UNIP](https://pedrohrqe.github.io/Calculadora_de_notas_UNIP/)
 
 2. Na página aberta, você encontrará campos para inserir as notas das avaliações da matéria.
 
