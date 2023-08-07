@@ -5,107 +5,43 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CALCULADORA DE NOTAS UNIP | TÁ GOSTOSINHO FML</title>
+    <title>CALCULADORA DE NOTAS UNIP</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="media.css">
+    <script src="script.js"></script>
 </head>
 
 <body>
     <header class="header">
         <h1><a class="header__title" href="https://pedrohrqe.github.io/Calculadora_de_notas_UNIP">Calculadora de notas UNIP</a></h1>
-        <nav class="menu__links">
-            <a class="header__links" href="https://github.com/Pedroh2001">GITHUB</a>
-            <a class="header__links" href="https://www.linkedin.com/in/pholiveira01/">LINKEDIN</a>
-            <a class="header__links" href="https://unip.br/">UNIP</a>
+        <nav class="menu">
+            <a class="menu__links" href="https://github.com/Pedroh2001">GITHUB</a>
+            <a class="menu__links" href="https://www.linkedin.com/in/pholiveira01/">LINKEDIN</a>
+            <a class="menu__links" href="https://unip.br/">UNIP</a>
         </nav>
     </header>
     <main>
         <h1 class="home__title">CALCULADORA DE NOTAS UNIP</h1>
-        <h3 class="home__subtitle">TÁ GOSTOSINHO | <a href="https://www.instagram.com/pedro.hrqe/">@PEDRO.HRQE</a></h3>
-        <table id="gradesTable">
+        <h3><a class="home__subtitle" href="https://www.instagram.com/pedro.hrqe/">Pedro Henrique | @pedro.hrqe</a></h3>
+        <table id="table">
             <tr>
                 <th>Matéria</th>
                 <th>Nota 1</th>
                 <th>Nota 2</th>
-                <th>Exame</th>
                 <th>Média</th>
                 <th>Status</th>
+                <th>Nota necesária no Exame</th>
             </tr>
         </table>
-        <button class="add-btn" onclick="addRow()">Adicionar Matéria</button>
+        <button class="add__button" onclick="addRow()">Adicionar Matéria</button>
     </main>
-
-    <script>
-        function calculateAverage(row) {
-            var nota1 = parseFloat(row.cells[1].querySelector('input').value);
-            var nota2 = parseFloat(row.cells[2].querySelector('input').value);
-
-            if (parseFloat(row.cells[1].querySelector('input').value) > 10 || parseFloat(row.cells[1].querySelector('input').value) < 0) {
-                row.cells[1].innerHTML = '<input type="number" min="0" max="10" step="0.1" placeholder="NP1" onchange="calculateAverage(this.parentNode.parentNode)">';
-            }
-
-            if (parseFloat(row.cells[2].querySelector('input').value) > 10 || parseFloat(row.cells[2].querySelector('input').value) < 0) {
-                row.cells[2].innerHTML = '<input type="number" min="0" max="10" step="0.1" placeholder="NP2" onchange="calculateAverage(this.parentNode.parentNode)">';
-            }
-
-            if (parseFloat(row.cells[1].querySelector('input').value) > 0 && parseFloat(row.cells[2].querySelector('input').value) > 0) {
-                var media = (nota1 + nota2) / 2;
-                row.cells[4].textContent = media.toFixed(1);
-
-                if (row.cells[5].textContent = media < 6.5) {
-                    row.cells[3].innerHTML = '<input type="number" max="10" min="0" step="0.1" placeholder="Exame" onchange="calculateAverageWExam(this.parentNode.parentNode)">';
-                    row.cells[5].textContent = "< PREENCHA EXAME";
-                }
-                else {
-                    row.cells[5].textContent = "APROVADO DIRETO"
-                }
-            }
-        }
-
-        function calculateAverageWExam(row) {
-            var nota1 = parseFloat(row.cells[1].querySelector('input').value);
-            var nota2 = parseFloat(row.cells[2].querySelector('input').value);
-            var exame = parseFloat(row.cells[3].querySelector('input').value);
-
-            var media = (nota1 + nota2) / 2;
-            var mediaExame = (media + exame) / 2;
-
-            if (parseFloat(row.cells[3].querySelector('input').value) > 10 || parseFloat(row.cells[3].querySelector('input').value) < 0) {
-                row.cells[3].innerHTML = '<input type="number" max="10" min="0" step="0.1" placeholder="Exame" onchange="calculateAverageWExam(this.parentNode.parentNode)">';
-            }
-
-            if (parseFloat(row.cells[3].querySelector('input').value) > 0) {
-                row.cells[4].textContent = mediaExame.toFixed(1);
-                row.cells[5].textContent = mediaExame >= 5 ? 'APROVADO VIA EXAME' : 'DP'
-            }
-            else {
-                row.cells[5].textContent = 'PREENCHA EXAME NOVAMENTE';
-            }
-        }
-
-        function addRow() {
-            var table = document.getElementById('gradesTable');
-            var rowCount = table.rows.length;
-            var row = table.insertRow(rowCount);
-            var cell1 = row.insertCell(0);
-            var cell2 = row.insertCell(1);
-            var cell3 = row.insertCell(2);
-            var cell4 = row.insertCell(3);
-            var cell5 = row.insertCell(4);
-            var cell6 = row.insertCell(5);
-            cell1.innerHTML = '<input type="text" placeholder="Matéria">';
-            cell2.innerHTML = '<input type="number" min="0" max="10" step="0.1" placeholder="NP1" onchange="calculateAverage(this.parentNode.parentNode)">';
-            cell3.innerHTML = '<input type="number" min="0" max="10" step="0.1" placeholder="NP2" onchange="calculateAverage(this.parentNode.parentNode)">';
-            cell4.innerHTML = '-';
-            cell5.textContent = '-';
-            cell6.textContent = '-';
-        }
-
-        function removeRow(button) {
-            var row = button.parentNode.parentNode;
-            row.parentNode.removeChild(row);
-        }
-    </script>
+    <footer class="footer">
+        <h2 class="footer__title">Calculadora de notas UNIP</h2>
+        <nav class="footer__menu">
+            <a class="menu__links" href="https://github.com/Pedroh2001">GITHUB</a>
+            <a class="menu__links" href="https://www.linkedin.com/in/pholiveira01/">LINKEDIN</a>
+            <a class="menu__links" href="https://unip.br/">UNIP</a>
+        </nav>
+    </footer>
 </body>
-
 </html>
