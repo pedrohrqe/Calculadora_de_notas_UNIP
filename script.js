@@ -14,9 +14,9 @@ function calculateAverage(row) {
         var media = (nota1 + nota2) / 2;
         row.cells[3].textContent = media.toFixed(1);
 
-        if (row.cells[5].textContent = media < 6.6) {
+        if (row.cells[5].textContent = media < 7) {
             aux = (10 - media);
-            row.cells[5].innerHTML = aux.toFixed(2);
+            row.cells[5].innerHTML = aux.toFixed(1);
             row.cells[4].textContent = "⚠️ NECESÁRIO EXAME ⚠️";
             row.cells[4].style.backgroundColor = '#ff000030';
             row.cells[5].style.backgroundColor = '#ff000030';
@@ -25,7 +25,7 @@ function calculateAverage(row) {
         }
         else {
             row.cells[4].textContent = "✅ APROVADO ✅";
-            row.cells[5].innerHTML = 'Aprovado ✅';
+            row.cells[5].innerHTML = '✅ APROVADO ✅';
             row.cells[4].style.backgroundColor = '#00800030';
             row.cells[5].style.backgroundColor = '#00800030';
             row.cells[4].style.color = '#008000';

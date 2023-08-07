@@ -24,7 +24,7 @@
 .header {
     background-color: var(--color-primary);
     padding: 20px 0px;
-    width: 100%;
+    width: 100vw;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -34,9 +34,11 @@
     text-decoration: none;
     font-weight: 600;
     color: var(--color-secondary);
+    font-size: 1.875rem;
+    text-align: center;
 }
 
-.menu{
+.menu {
     display: flex;
     align-items: center;
     gap: 70px;
@@ -56,6 +58,7 @@
     transform: scale(1.3);
     background-color: var(--color-secondary);
     color: var(--color-primary);
+    font-weight: 600;
 }
 
 body {
@@ -70,28 +73,34 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 90vw;
+    width: 80vw;
     gap: 10px;
 }
 
 .home__title {
     color: var(--color-primary);
-    font-size: 40px;
+    font-size: 1.875rem;
     font-weight: 600;
 }
 
 .home__subtitle {
     color: var(--color-primary);
-    font-size: 20px;
+    font-size: 1.25rem;
     text-decoration: none;
+    padding: 5px;
+    border-radius: 5px;
+    transition: 300ms;
 }
 
-.home__subtitle a:hover {
+.home__subtitle:hover {
+    transition: 300ms;
+    background-color: var(--color-secondary);
     transform: scale(1.05);
+    font-weight: 600;
 }
 
 table {
-    width: 80%;
+    width: 100%;
     border-collapse: collapse;
 }
 
@@ -101,6 +110,7 @@ td {
     border: 1px solid var(--color-primary);
     color: var(--color-background);
     padding: 5px;
+    align-items: center;
 }
 
 tr td:nth-child(5) {
@@ -112,12 +122,12 @@ tr td:nth-child(6) {
 }
 
 th {
-    font-size: 18px;
+    font-size: 1.125rem;
     color: var(--color-primary);
 }
 
 tr {
-    font-size: 15px;
+    font-size: 0.9375rem;
     color: var(--color-background);
 }
 
@@ -127,14 +137,13 @@ tr:hover {
 
 .add__button {
     transition: 300ms;
-    padding: 6px 12px;
+    padding: 8px 15px;
     background-color: var(--color-primary);
     border: none;
     cursor: pointer;
-    font-size: 20px;
+    font-size: 1.25rem;
     border-radius: 5px;
     width: auto;
-    border: 2px solid var(--color-text);
 }
 
 .add__button:hover {
@@ -144,14 +153,21 @@ tr:hover {
     color: var(--color-background);
 }
 
-
-
 input {
-    background-color: var(--color-secondary-light);
     color: var(--color-background);
-    font-size: 15px;
-    padding: 0% 1%;
     width: 90%;
+    padding: 5px;
+    background-color: var(--color-primary-light);
+    border-radius: 5px;
+    border: 3px solid transparent;
+    font-size: 1rem;
+    transition: 300ms;
+}
+
+input:hover, input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    transition: 300ms;
 }
 
 .footer {
@@ -165,8 +181,32 @@ input {
     height: 150px;
 }
 
+.footer__info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 .footer__title {
     color: var(--color-secondary);
+    font-weight: 600;
+    padding: 5px;
+}
+
+.footer__text {
+    text-decoration: none;
+    color: var(--color-text);
+    border-radius: 5px;
+    padding: 5px;
+    width: fit-content;
+}
+
+.footer__text:hover {
+    background-color: var(--color-secondary);
+    padding: 5px;
+    color: var(--color-background);
+    transform: scale(1.05);
+    transition: 300ms;
     font-weight: 600;
 }
 
@@ -174,4 +214,74 @@ input {
     display: flex;
     flex-direction: column;
     gap: 5px;
+}
+
+@media (max-width: 1000px) {
+    main {
+        width: 97vw;
+    }
+
+    .header {
+        margin: 0;
+        padding: 0;
+        flex-direction: column;
+        align-items: center;
+        width: 100vw;
+    }
+
+    .header__title {
+        font-size: 1.5rem;
+        background-color: #06376d;
+        width: 100vw;
+        height: 50%;
+        padding: 15px 0px;
+    }
+
+    .menu {
+        padding: 10px;
+    }
+
+    .menu__links {
+        font-size: 0.8rem;
+    }
+
+    .home__title {
+        font-size: 1.375rem;
+    }
+
+    .home__subtitle {
+        font-size: 0.9375rem;
+    }
+
+    th,
+    td {
+        font-size: 0.9rem;
+    }
+
+    input {
+        margin: 0px;
+        padding: 2px;
+        width: 80%;
+    }
+
+    .add__button {
+        font-size: 0.9rem;
+        padding: 8px;
+    }
+
+    .footer {
+        height: auto;
+        padding: 15px;
+        gap: 0px;
+    }
+
+    .footer__title {
+        font-size: 1.25rem;
+        padding: 2px;
+    }
+
+    .footer__text {
+        padding: 2px;
+        font-size: 0.75rem;
+    }
 }
