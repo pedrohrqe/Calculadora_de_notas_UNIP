@@ -1,58 +1,82 @@
 function calculateAverage(row) {
-    var nota1 = parseFloat(row.cells[1].querySelector('input').value);
-    var nota2 = parseFloat(row.cells[2].querySelector('input').value);
+    const nota1Input = row.cells[1].querySelector('input');
+    const nota2Input = row.cells[2].querySelector('input');
 
-    if (parseFloat(row.cells[1].querySelector('input').value) > 10 || parseFloat(row.cells[1].querySelector('input').value) < 0) {
-        row.cells[1].innerHTML = '<input type="number" min="0" max="10" step="0.1" placeholder="NP1" onchange="calculateAverage(this.parentNode.parentNode)">';
+    const nota1 = parseFloat(nota1Input.value);
+    const nota2 = parseFloat(nota2Input.value);
+
+    const inputOutOfRange = nota => nota > 10 || nota < 0;
+
+    if (inputOutOfRange(nota1)) {
+        nota1Input.outerHTML = '<input type="number" min="0" max="10" step="0.1" placeholder="NP1" onchange="calculateAverage(this.parentNode.parentNode)">';
     }
 
-    if (parseFloat(row.cells[2].querySelector('input').value) > 10 || parseFloat(row.cells[2].querySelector('input').value) < 0) {
-        row.cells[2].innerHTML = '<input type="number" min="0" max="10" step="0.1" placeholder="NP2" onchange="calculateAverage(this.parentNode.parentNode)">';
+    if (inputOutOfRange(nota2)) {
+        nota2Input.outerHTML = '<input type="number" min="0" max="10" step="0.1" placeholder="NP2" onchange="calculateAverage(this.parentNode.parentNode)">';
     }
 
-    if (parseFloat(row.cells[1].querySelector('input').value) > 0 && parseFloat(row.cells[2].querySelector('input').value) > 0) {
-        var media = (nota1 + nota2) / 2;
+    if (nota1 > 0 && nota2 > 0) {
+        const media = (nota1 + nota2) / 2;
+        const exameRequired = media < 7;
+        const aux = exameRequired ? (10 - media).toFixed(1) : '';
+        const statusText = exameRequired ? '⚠️ NECESÁRIO EXAME ⚠️' : '✅ APROVADO ✅';
+        const backgroundColor = exameRequired ? '#ff000030' : '#00800030';
+        const textColor = exameRequired ? '#ff0000' : '#008000';
+
         row.cells[3].textContent = media.toFixed(1);
-
-        if (row.cells[5].textContent = media < 7) {
-            aux = (10 - media);
-            row.cells[5].innerHTML = aux.toFixed(1);
-            row.cells[4].textContent = "⚠️ NECESÁRIO EXAME ⚠️";
-            row.cells[4].style.backgroundColor = '#ff000030';
-            row.cells[5].style.backgroundColor = '#ff000030';
-            row.cells[4].style.color = '#ff0000';
-            row.cells[5].style.color = '#ff0000';
-        }
-        else {
-            row.cells[4].textContent = "✅ APROVADO ✅";
-            row.cells[5].innerHTML = '✅ APROVADO ✅';
-            row.cells[4].style.backgroundColor = '#00800030';
-            row.cells[5].style.backgroundColor = '#00800030';
-            row.cells[4].style.color = '#008000';
-            row.cells[5].style.color = '#008000';
-        }
+        row.cells[4].textContent = statusText;
+        row.cells[5].innerHTML = aux;
+        row.cells[4].style.backgroundColor = backgroundColor;
+        row.cells[5].style.backgroundColor = backgroundColor;
+        row.cells[4].style.color = textColor;
+        row.cells[5].style.color = textColor;
     }
 }
 
 function addRow() {
-    var table = document.getElementById('table');
-    var rowCount = table.rows.length;
-    var row = table.insertRow(rowCount);
-    var cell1 = row.insertCell(0);
-    var cell2 = row.insertCell(1);
-    var cell3 = row.insertCell(2);
-    var cell4 = row.insertCell(3);
-    var cell5 = row.insertCell(4);
-    var cell6 = row.insertCell(5);
-    cell1.innerHTML = '<input type="text" placeholder="Matéria">';
-    cell2.innerHTML = '<input type="number" min="0" max="10" step="0.1" placeholder="NP1" onchange="calculateAverage(this.parentNode.parentNode)">';
-    cell3.innerHTML = '<input type="number" min="0" max="10" step="0.1" placeholder="NP2" onchange="calculateAverage(this.parentNode.parentNode)">';
-    cell4.innerHTML = '-';
-    cell5.textContent = '-';
-    cell6.textContent = '-';
+    const table = document.getElementById('table');
+    const row = table.insertRow(table.rows.length);
+    const inputsHTML = '<input type="number" class="input__data" min="0" max="10" step="0.1" placeholder="NP1" onchange="calculateAverage(this.parentNode.parentNode)">';
+
+    row.insertCell(0).innerHTML = '<input type="text" class="input__data" placeholder="Matéria">';
+    row.insertCell(1).innerHTML = inputsHTML;
+    row.insertCell(2).innerHTML = inputsHTML;
+    row.insertCell(3);
+    row.insertCell(4);
+    row.insertCell(5);
 }
 
-function removeRow(button) {
-    var row = button.parentNode.parentNode;
-    row.parentNode.removeChild(row);
+function getStandardTextSize() {
+    const screenWidth = window.innerWidth;
+    return screenWidth < 1000 ? 10 : 25;
+}
+
+const textSize = getStandardTextSize() + 'px';
+
+function exportToPDF() {
+    const pdf = new jsPDF();
+    const x = 15;
+    const y = 15;
+    const table = document.getElementById('table');
+    const inputElements = document.querySelectorAll('.input__data');
+
+    table.style.fontSize = textSize;
+
+    for (const inputElement of inputElements) {
+        inputElement.style.fontSize = textSize;
+        inputElement.style.width = '95%';
+        inputElement.style.height = '95%';
+        inputElement.style.backgroundColor = 'transparent';
+        inputElement.style.textAlign = 'center';
+    }
+
+    html2canvas(table).then(canvas => {
+        const imgData = canvas.toDataURL('image/png');
+
+        pdf.text('Notas UNIP - por @pedro.hrqe', x, y);
+        pdf.addImage(imgData, 'PNG', x, y + 10, 180, 0);
+
+        pdf.text('@pedro.hrqe', 90, 290);
+        pdf.save('Notas_UNIP.pdf');
+    });
 }

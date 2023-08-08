@@ -9,11 +9,13 @@
     <link rel="shortcut icon" href="asset/icons/logo.svg" type="image/png">
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.debug.js" integrity="sha384-THVO/sM0mFD9h7dfSndI6TS0PgAGavwKvB5hAxRRvc0o9cPLohB0wb/PTA7LdUHs" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <header class="header">
-        <a class="header__title" href="https://pedrohrqe.github.io/Calculadora_de_notas_UNIP">CALCULADORA DE NOTAS UNIP</a>
+        <a class="header__title" href="https://pedrohrqe.github.io/Calculadora_de_notas_UNIP">CALCULADORA DE NOTAS
+            UNIP</a>
         <nav class="menu">
             <a class="menu__links" href="https://github.com/Pedroh2001">GITHUB</a>
             <a class="menu__links" href="https://www.linkedin.com/in/pholiveira01/">LINKEDIN</a>
@@ -25,16 +27,19 @@
         <h3><a class="home__subtitle" href="https://www.instagram.com/pedro.hrqe/">Pedro Henrique 👨‍💻 |
                 @pedro.hrqe</a></h3>
         <table id="table">
-            <tr>
-                <th>Matéria</th>
-                <th>Nota NP1</th>
-                <th>Nota NP2</th>
-                <th>Média</th>
-                <th>Status</th>
-                <th>Nota necesária no Exame</th>
-            </tr>
+            <thead>
+                <tr>
+                    <th>Matéria</th>
+                    <th>Nota NP1</th>
+                    <th>Nota NP2</th>
+                    <th>Média</th>
+                    <th>Status</th>
+                    <th>Nota necessária no Exame</th>
+                </tr>
+            </thead>
         </table>
         <button class="add__button" onclick="addRow()">Adicionar Matéria</button>
+        <button class="export__button" onclick="exportToPDF()">Exportar para PDF</button>
     </main>
     <footer class="footer">
         <div class="footer__info">
@@ -48,5 +53,4 @@
         </nav>
     </footer>
 </body>
-
 </html>

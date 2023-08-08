@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
-
 :root {
     --color-background: #181818;
     --color-primary: #075ebd;
@@ -19,6 +17,13 @@
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
     color: var(--color-text);
+}
+
+body {
+    background-color: var(--color-text);
+    align-items: center;
+    display: flex;
+    flex-direction: column;
 }
 
 .header {
@@ -54,18 +59,10 @@
 }
 
 .menu__links:hover {
-    transition: 300ms;
     transform: scale(1.3);
     background-color: var(--color-secondary);
     color: var(--color-primary);
     font-weight: 600;
-}
-
-body {
-    background-color: var(--color-text);
-    align-items: center;
-    display: flex;
-    flex-direction: column;
 }
 
 main {
@@ -93,7 +90,6 @@ main {
 }
 
 .home__subtitle:hover {
-    transition: 300ms;
     background-color: var(--color-secondary);
     transform: scale(1.05);
     font-weight: 600;
@@ -115,27 +111,25 @@ td {
     max-width: 16.6vw;
 }
 
-tr td:nth-child(5) {
-    font-weight: 900;
-}
-
+tr td:nth-child(5),
 tr td:nth-child(6) {
     font-weight: 900;
 }
 
-.add__button {
+.add__button,
+.export__button {
     transition: 300ms;
-    padding: 8px 15px;
+    width: 290px;
+    padding: 8px 25px;
     background-color: var(--color-primary);
     border: none;
     cursor: pointer;
     font-size: 1.25rem;
     border-radius: 5px;
-    width: auto;
 }
 
-.add__button:hover {
-    transition: 300ms;
+.add__button:hover,
+.export__button:hover {
     transform: scale(1.1);
     background-color: var(--color-secondary);
     color: var(--color-background);
@@ -152,7 +146,8 @@ input {
     border-radius: 0px;
 }
 
-input:hover, input:focus {
+input:hover,
+input:focus {
     outline: none;
     background-color: var(--color-primary-light);
     border-color: var(--color-primary);
@@ -251,7 +246,9 @@ input:hover, input:focus {
         font-size: 0.75rem;
     }
 
-    .add__button {
+    .add__button,
+    .export__button {
+        width: 150px;
         font-size: 0.75rem;
         padding: 8px;
     }
