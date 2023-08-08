@@ -48,7 +48,16 @@ function addRow() {
 
 function getStandardTextSize() {
     const screenWidth = window.innerWidth;
-    return screenWidth < 1000 ? 10 : 25;
+    const screenHeight = window.innerHeight;
+
+    // Defina o tamanho padrão de acordo com a largura da tela (exemplo)
+    let standardSize = 25; // Tamanho de fonte padrão
+
+    if (screenWidth < 1000) {
+        standardSize = 10;
+    }
+
+    return standardSize;
 }
 
 const textSize = getStandardTextSize() + 'px';
