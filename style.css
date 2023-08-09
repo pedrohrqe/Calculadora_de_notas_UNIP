@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
 :root {
     --color-background: #181818;
     --color-primary: #075ebd;
@@ -6,6 +8,7 @@
     --color-secondary-light: #ffe60030;
     --color-other: #06376d;
     --color-text: #ffffff;
+    --color-glass: #ffffff25;
     --color-alert: #ff0000;
     --color-alert-light: #ff000030;
     --color-verified: #008000;
@@ -14,22 +17,28 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-weight: 400;
     color: var(--color-text);
 }
 
 body {
-    background-color: var(--color-text);
+    background-image: url(asset/images/background_1.svg);
+    background-size: 100vw;
+    background-repeat: no-repeat;
+    background-color: #0e0d3d;
     align-items: center;
     display: flex;
     flex-direction: column;
 }
 
 .header {
-    background-color: var(--color-primary);
+    background-color: var(--color-glass);
+    backdrop-filter: blur(12.5px);
     padding: 20px 0px;
-    width: 100vw;
+    width: 95vw;
+    margin-top: 1.5vh;
+    border-radius: 10px;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -37,9 +46,9 @@ body {
 
 .header__title {
     text-decoration: none;
-    font-weight: 600;
-    color: var(--color-secondary);
-    font-size: 1.875rem;
+    font-weight: 400;
+    color: var(--color-text);
+    font-size: 1.6rem;
     text-align: center;
 }
 
@@ -53,35 +62,29 @@ body {
     text-align: center;
     transition: 300ms;
     text-decoration: none;
-    color: var(--color-secondary);
+    color: var(--color-text);
     padding: 5px;
     border-radius: 5px;
 }
 
 .menu__links:hover {
     transform: scale(1.3);
-    background-color: var(--color-secondary);
-    color: var(--color-primary);
-    font-weight: 600;
+    background-color: var(--color-glass);
+    backdrop-filter: blur(12.5px);
 }
 
 main {
-    margin-top: 20px;
+    margin-top: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 80vw;
     gap: 10px;
+    min-height: 65vh;
 }
 
-.home__title {
-    color: var(--color-primary);
-    font-size: 1.875rem;
-    font-weight: 600;
-}
-
-.home__subtitle {
-    color: var(--color-primary);
+.home__aboutme {
+    color: var(--color-text);
     font-size: 1.25rem;
     text-decoration: none;
     padding: 5px;
@@ -89,21 +92,23 @@ main {
     transition: 300ms;
 }
 
-.home__subtitle:hover {
-    background-color: var(--color-secondary);
+.home__aboutme:hover {
+    background-color: var(--color-glass);
     transform: scale(1.05);
     font-weight: 600;
 }
 
 table {
+    background-color: var(--color-glass);
+    backdrop-filter: blur(12.5px);
     width: 100%;
     border-collapse: collapse;
 }
 
 th,
 td {
-    border: 1px solid var(--color-primary);
-    color: var(--color-primary);
+    border: 1px solid var(--color-glass);
+    color: var(--color-text);
     align-items: center;
     height: 35px;
     text-align: center;
@@ -111,17 +116,14 @@ td {
     max-width: 16.6vw;
 }
 
-tr td:nth-child(5),
-tr td:nth-child(6) {
-    font-weight: 900;
-}
 
 .add__button,
 .export__button {
     transition: 300ms;
     width: 290px;
     padding: 8px 25px;
-    background-color: var(--color-primary);
+    background-color: var(--color-glass);
+    backdrop-filter: blur(12.5px);
     border: none;
     cursor: pointer;
     font-size: 1.25rem;
@@ -136,7 +138,9 @@ tr td:nth-child(6) {
 }
 
 input {
-    color: var(--color-background);
+    background: none;
+    backdrop-filter: blur(12.5px);
+    color: var(--color-text);
     width: 100%;
     height: 100%;
     font-size: 1rem;
@@ -146,23 +150,31 @@ input {
     border-radius: 0px;
 }
 
+input::placeholder {
+    color: var(--color-text);
+}
+
 input:hover,
 input:focus {
     outline: none;
-    background-color: var(--color-primary-light);
+    background-color: var(--color-glass);
     border-color: var(--color-primary);
     transition: 300ms;
 }
 
 .footer {
-    position: fixed;
+    position: relative;
     bottom: 0;
-    background-color: var(--color-other);
+    background-color: var(--color-glass);
+    backdrop-filter: blur(12.5px);
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 100%;
+    width: 95vw;
     height: 150px;
+    margin-top: 8vh;
+    margin-bottom: 1.5vh;
+    border-radius: 10px;
 }
 
 .footer__info {
@@ -172,7 +184,7 @@ input:focus {
 }
 
 .footer__title {
-    color: var(--color-secondary);
+    color: var(--color-text);
     font-weight: 600;
     padding: 5px;
 }
@@ -186,12 +198,10 @@ input:focus {
 }
 
 .footer__text:hover {
-    background-color: var(--color-secondary);
-    padding: 5px;
-    color: var(--color-background);
+    background-color: var(--color-glass);
+    backdrop-filter: blur(12.5px);
     transform: scale(1.05);
     transition: 300ms;
-    font-weight: 600;
 }
 
 .footer__menu {
@@ -202,20 +212,19 @@ input:focus {
 
 @media (max-width: 1000px) {
     main {
-        width: 97vw;
+        min-height: 60vh;
+        width: 95vw;
     }
 
     .header {
-        margin: 0;
+        margin-top: 1vh;
         padding: 0;
         flex-direction: column;
         align-items: center;
-        width: 100vw;
     }
 
     .header__title {
         font-size: 1.5rem;
-        background-color: #06376d;
         width: 100vw;
         height: 50%;
         padding: 15px 0px;
@@ -229,11 +238,7 @@ input:focus {
         font-size: 0.8rem;
     }
 
-    .home__title {
-        font-size: 1.375rem;
-    }
-
-    .home__subtitle {
+    .home__aboutme {
         font-size: 0.9375rem;
     }
 
@@ -255,17 +260,24 @@ input:focus {
 
     .footer {
         height: auto;
-        padding: 15px;
         gap: 0px;
     }
 
+    .footer__info {
+        gap: 5px;
+    }
+
     .footer__title {
-        font-size: 1.25rem;
+        font-size: 1.1rem;
         padding: 2px;
     }
 
     .footer__text {
         padding: 2px;
         font-size: 0.75rem;
+    }
+
+    .footer__menu {
+        padding: 15px 0px;
     }
 }

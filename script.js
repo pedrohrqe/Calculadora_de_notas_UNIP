@@ -22,13 +22,13 @@ function calculateAverage(row) {
         var backgroundColor, textColor, resultText;
 
         if (media < 7) {
-            backgroundColor = '#ff000030';
-            textColor = '#ff0000';
+            backgroundColor = '#ff000070';
+            textColor = '#ffffff';
             resultText = "&#9888; NECESÁRIO EXAME &#9888;"; // ⚠️
             row.cells[5].innerHTML = exame.toFixed(1);
         } else {
-            backgroundColor = '#00800030';
-            textColor = '#008000';
+            backgroundColor = '#00800070';
+            textColor = '#ffffff';
             resultText = "&#9989; APROVADO &#9989;"; // ✅
             row.cells[5].innerHTML = resultText;
         }
@@ -51,6 +51,9 @@ function addRow() {
     row.insertCell(3);
     row.insertCell(4);
     row.insertCell(5);
+
+    const cel = document.querySelectorAll('td');
+    cel.style.border = '1px solid #fff';
 }
 
 function getStandardTextSize() {
