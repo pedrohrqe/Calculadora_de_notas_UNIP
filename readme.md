@@ -1,6 +1,6 @@
 # Calculadora de Notas da Faculdade UNIP 📚✏️
 
-Bem-vindo ao Site de Notas da Faculdade UNIP! Este é um projeto em HTML, CSS e JavaScript que permite calcular a nota, média e determinar se você será aprovado ou não em uma matéria.
+Bem-vindo a Calculadora de Notas da Faculdade UNIP! Este é um projeto em HTML, CSS e JavaScript que permite calcular a nota, média e determinar se você será aprovado ou não em uma matéria.
 
 ## Funcionalidades 🧮📊
 
@@ -19,8 +19,6 @@ Bem-vindo ao Site de Notas da Faculdade UNIP! Este é um projeto em HTML, CSS e 
 4. O site irá calcular a média com base nas notas inseridas.
 
 6. O resultado será exibido na tela, informando se você foi aprovado ou reprovado, ou se precisará de realizar o exame
-
-7. Caso necessário, realize informe uma nota de exame e verifique se será aprovado ou não
 
 ## Requisitos 🛠️📋
 
