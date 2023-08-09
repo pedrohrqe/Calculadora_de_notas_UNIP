@@ -1,31 +1,40 @@
+function isValidGrade(grade) {
+    return grade >= 0 && grade <= 10;
+}
+
 function calculateAverage(row) {
-    const nota1Input = row.cells[1].querySelector('input');
-    const nota2Input = row.cells[2].querySelector('input');
+    var inputNota1 = row.cells[1].querySelector('input');
+    var inputNota2 = row.cells[2].querySelector('input');
 
-    const nota1 = parseFloat(nota1Input.value);
-    const nota2 = parseFloat(nota2Input.value);
+    var nota1 = parseFloat(inputNota1.value);
+    var nota2 = parseFloat(inputNota2.value);
 
-    const inputOutOfRange = nota => nota > 10 || nota < 0;
-
-    if (inputOutOfRange(nota1)) {
-        nota1Input.outerHTML = '<input type="number" min="0" max="10" step="0.1" placeholder="NP1" onchange="calculateAverage(this.parentNode.parentNode)">';
+    if (!isValidGrade(nota1)) {
+        inputNota1.value = '';
+    }
+    if (!isValidGrade(nota2)) {
+        inputNota2.value = '';
     }
 
-    if (inputOutOfRange(nota2)) {
-        nota2Input.outerHTML = '<input type="number" min="0" max="10" step="0.1" placeholder="NP2" onchange="calculateAverage(this.parentNode.parentNode)">';
-    }
+    if (isValidGrade(nota1) && isValidGrade(nota2)) {
+        var media = (nota1 + nota2) / 2;
+        var exame = (10 - media);
+        var backgroundColor, textColor, resultText;
 
-    if (nota1 > 0 && nota2 > 0) {
-        const media = (nota1 + nota2) / 2;
-        const exameRequired = media < 7;
-        const aux = exameRequired ? (10 - media).toFixed(1) : '';
-        const statusText = exameRequired ? '⚠️ NECESÁRIO EXAME ⚠️' : '✅ APROVADO ✅';
-        const backgroundColor = exameRequired ? '#ff000030' : '#00800030';
-        const textColor = exameRequired ? '#ff0000' : '#008000';
+        if (media < 7) {
+            backgroundColor = '#ff000030';
+            textColor = '#ff0000';
+            resultText = "&#9888; NECESÁRIO EXAME &#9888;"; // ⚠️
+            row.cells[5].innerHTML = exame.toFixed(1);
+        } else {
+            backgroundColor = '#00800030';
+            textColor = '#008000';
+            resultText = "&#9989; APROVADO &#9989;"; // ✅
+            row.cells[5].innerHTML = resultText;
+        }
 
         row.cells[3].textContent = media.toFixed(1);
-        row.cells[4].textContent = statusText;
-        row.cells[5].innerHTML = aux;
+        row.cells[4].innerHTML = resultText;
         row.cells[4].style.backgroundColor = backgroundColor;
         row.cells[5].style.backgroundColor = backgroundColor;
         row.cells[4].style.color = textColor;
@@ -36,11 +45,9 @@ function calculateAverage(row) {
 function addRow() {
     const table = document.getElementById('table');
     const row = table.insertRow(table.rows.length);
-    const inputsHTML = '<input type="number" class="input__data" min="0" max="10" step="0.1" placeholder="NP1" onchange="calculateAverage(this.parentNode.parentNode)">';
-
     row.insertCell(0).innerHTML = '<input type="text" class="input__data" placeholder="Matéria">';
-    row.insertCell(1).innerHTML = inputsHTML;
-    row.insertCell(2).innerHTML = inputsHTML;
+    row.insertCell(1).innerHTML = '<input type="number" class="input__data" min="0" max="10" step="0.1" placeholder="NP1" onchange="calculateAverage(this.parentNode.parentNode)">';
+    row.insertCell(2).innerHTML = '<input type="number" class="input__data" min="0" max="10" step="0.1" placeholder="NP2" onchange="calculateAverage(this.parentNode.parentNode)">';
     row.insertCell(3);
     row.insertCell(4);
     row.insertCell(5);
@@ -59,6 +66,7 @@ function exportToPDF() {
     const y = 15;
     const table = document.getElementById('table');
     const inputElements = document.querySelectorAll('.input__data');
+    const currentFontSize = window.getComputedStyle(table).fontSize;
 
     table.style.fontSize = textSize;
 
@@ -75,8 +83,16 @@ function exportToPDF() {
 
         pdf.text('Notas UNIP - por @pedro.hrqe', x, y);
         pdf.addImage(imgData, 'PNG', x, y + 10, 180, 0);
-
         pdf.text('@pedro.hrqe', 90, 290);
         pdf.save('Notas_UNIP.pdf');
+
+        table.style.fontSize = currentFontSize;
+        for (const inputElement of inputElements) {
+            inputElement.style.fontSize = currentFontSize;
+            inputElement.style.width = '';
+            inputElement.style.height = '';
+            inputElement.style.backgroundColor = '';
+            inputElement.style.textAlign = '';
+        }
     });
 }
