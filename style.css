@@ -34,6 +34,7 @@ body {
 
 .header {
     background-color: var(--color-glass);
+    border: 1px solid var(--color-glass);
     backdrop-filter: blur(12.5px);
     padding: 20px 0px;
     width: 95vw;
@@ -74,13 +75,11 @@ body {
 }
 
 main {
-    margin-top: 10px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    width: 80vw;
-    gap: 10px;
-    min-height: 65vh;
+    margin-top: 10px;
+    gap: 50px;
+    width: 95vw;
 }
 
 .home__aboutme {
@@ -116,15 +115,14 @@ td {
     max-width: 16.6vw;
 }
 
-
 .add__button,
 .export__button {
     transition: 300ms;
     width: 290px;
     padding: 8px 25px;
     background-color: var(--color-glass);
+    border: 1px solid var(--color-glass);
     backdrop-filter: blur(12.5px);
-    border: none;
     cursor: pointer;
     font-size: 1.25rem;
     border-radius: 5px;
@@ -162,10 +160,28 @@ input:focus {
     transition: 300ms;
 }
 
+.home__calc {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    min-height: 60vh;
+}
+
+.home__info {
+    background-color: var(--color-glass);
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid var(--color-glass);
+    position: relative;
+    bottom: 0;
+}
+
 .footer {
     position: relative;
     bottom: 0;
     background-color: var(--color-glass);
+    border: 1px solid var(--color-glass);
     backdrop-filter: blur(12.5px);
     display: flex;
     justify-content: space-around;

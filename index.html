@@ -9,7 +9,9 @@
     <link rel="shortcut icon" href="asset/icons/logo.svg" type="image/png">
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.debug.js" integrity="sha384-THVO/sM0mFD9h7dfSndI6TS0PgAGavwKvB5hAxRRvc0o9cPLohB0wb/PTA7LdUHs" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.debug.js"
+        integrity="sha384-THVO/sM0mFD9h7dfSndI6TS0PgAGavwKvB5hAxRRvc0o9cPLohB0wb/PTA7LdUHs"
+        crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -23,22 +25,29 @@
         </nav>
     </header>
     <main>
-        <h3><a class="home__aboutme" href="https://www.instagram.com/pedro.hrqe/">Pedro Henrique 👨‍💻 |
-                @pedro.hrqe</a></h3>
-        <table id="table">
-            <thead>
-                <tr>
-                    <th>Matéria</th>
-                    <th>Nota NP1</th>
-                    <th>Nota NP2</th>
-                    <th>Média</th>
-                    <th>Status</th>
-                    <th>Nota necessária no Exame</th>
-                </tr>
-            </thead>
-        </table>
-        <button class="add__button" onclick="addRow()">Adicionar Matéria</button>
-        <button class="export__button" onclick="exportToPDF()">Exportar para PDF</button>
+        <div class="home__calc">
+            <h3><a class="home__aboutme" href="https://www.instagram.com/pedro.hrqe/">Pedro Henrique 👨‍💻 |
+                    @pedro.hrqe</a></h3>
+            <table id="table">
+                <thead>
+                    <tr>
+                        <th>Matéria</th>
+                        <th>Nota NP1</th>
+                        <th>Nota NP2</th>
+                        <th>Média</th>
+                        <th>Status</th>
+                        <th>Nota necessária no Exame</th>
+                    </tr>
+                </thead>
+            </table>
+            <button class="add__button" onclick="addRow()">Adicionar Matéria</button>
+            <button class="export__button" onclick="exportToPDF()">Exportar para PDF</button>
+        </div>
+        <div class="home__info">
+            <p>Bem-vindo a Calculadora de Notas da Faculdade UNIP! Este é um projeto em HTML, CSS e JavaScript que permite calcular a nota, média e determinar se você será aprovado ou não em uma matéria da Universidade Paulista (UNIP).
+            </p>
+            <p><br>Caso não seja aprovado será exibida a informação '&#9888; NECESÁRIO EXAME &#9888;', e será apresentada a média necessária para que seja possível a aprovação na matéria. Ao fim é possível gerar um PDF com as informações com base nos resultados obtidos.</p>
+        </div>
     </main>
     <footer class="footer">
         <div class="footer__info">
@@ -52,4 +61,5 @@
         </nav>
     </footer>
 </body>
+
 </html>
