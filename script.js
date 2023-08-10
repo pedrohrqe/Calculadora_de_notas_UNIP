@@ -51,17 +51,12 @@ function addRow() {
     row.insertCell(3);
     row.insertCell(4);
     row.insertCell(5);
-
-    const cel = document.querySelectorAll('td');
-    cel.style.border = '1px solid #fff';
 }
 
 function getStandardTextSize() {
     const screenWidth = window.innerWidth;
-    const screenHeight = window.innerHeight;
 
-    // Defina o tamanho padrão de acordo com a largura da tela (exemplo)
-    let standardSize = 25; // Tamanho de fonte padrão
+    let standardSize = 25;
 
     if (screenWidth < 1000) {
         standardSize = 10;

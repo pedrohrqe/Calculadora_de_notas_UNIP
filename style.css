@@ -128,11 +128,11 @@ td {
     border-radius: 5px;
 }
 
-.add__button:hover,
-.export__button:hover {
+.add__button:active,
+.export__button:active {
+    transition: 0s;
     transform: scale(1.1);
-    background-color: var(--color-secondary);
-    color: var(--color-background);
+    background: var(--color-secondary);
 }
 
 input {
@@ -152,7 +152,6 @@ input::placeholder {
     color: var(--color-text);
 }
 
-input:hover,
 input:focus {
     outline: none;
     background-color: var(--color-glass);
@@ -265,6 +264,7 @@ input:focus {
 
     input {
         font-size: 0.75rem;
+        background-color: var(--color-glass);
     }
 
     .add__button,
